@@ -1,0 +1,22 @@
+pg 20:
+
+  Short Circuit Evaluation:
+
+	console.log( null || "user" )
+	// -> user
+	console.log("Agnes" || "user")
+	// -> Agnes
+
+"If you have a value that might be empty you can put ||
+after it with a replacement value."
+
+"If the initial value can be converted to false, you'll
+get the replacement instead."
+
+(don't forget that: )
+(0, NaN, and "" are all false)
+
+
+&& works similarly, just opposite
+	false && X
+	// -> false (regardless of X)
