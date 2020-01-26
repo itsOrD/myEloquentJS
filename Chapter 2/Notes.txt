@@ -1,0 +1,105 @@
+pg 26:
+  Reserved 'keywords' in Javascript:
+
+break: exits loop and resumes code down the stack
+
+case: goes with switch statement
+
+catch: try-catch
+
+class: .?.
+
+const: constant var
+
+continue: for loop "next iteration"
+
+debugger: stops code run for debugging
+
+default: ??
+
+delete: ??
+
+do: loop logic
+
+else: control flow logic
+
+enum: .?.
+
+export: .?.
+
+extends: .?.
+
+false: "negative"/off boolean
+
+finally: "last" after .then and .next's
+
+for: loop logic
+
+function: 'machines' of coding
+
+if: logic block that affects control flow and causes 
+	conditional execution
+
+implements: .?. 
+
+import: .?.
+
+interface: ??
+
+in: loop logic
+
+instanceof: like typeof (binary)
+
+let: re-assignable const (has 'block-scope' - aka 'local')
+
+new: uh?
+
+package: ??
+
+private: ??
+
+protected: ?? 
+
+public: ??
+
+return: exit
+
+static: ??
+
+super: ??
+
+switch: statement
+
+this: ...
+
+throw: causes function/rpogram to stop and exit if error
+
+true: "positive"/on boolean
+
+try: try-catch
+
+typeof: 
+
+var: name binding functionary
+
+void: ??
+
+while: loop logic
+
+with: ??
+
+yield: ??
+
+ - - -
+
+pg 33: 
+  Playing with loops: 
+
+continue: when continue is encountered in a loop body
+		  control jumps out of the body and continues with
+		  the loops next iteration
+
+break: exits the loop statement block 
+	   important to note - this resumes at end of statement,
+	   does NOT exit the over function scope (unless its at
+	   the end of said scope)
