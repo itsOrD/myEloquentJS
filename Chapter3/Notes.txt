@@ -1,0 +1,77 @@
+pg 45.
+declaration notation
+	"Function declarations are not part of the regular 
+	top-to-bottom flow of control.
+	They are conceptually moved to the top of their scope 
+	and can be used by all the code in that scope."
+		TODO: find out about above b/c isn't it true of all types of bindings in JS..?
+	NOTE: function declarations do not require a ';' at the end
+
+
+pg 48.
+default parameter value
+	functin power(base, exponent = 2) {
+		let result = 1;
+		for (let count = 0; count < exponenet; count++) {
+			result *= base;
+		}
+		return result;
+	}
+
+	console.log(power(4));
+	// -> 16
+	console.log(power(2, 6));
+	// -> 64
+
+
+pg 49.
+closure
+	"being able to reference a specific instance of a local binding in an enclosing scope"
+
+	function wrapValue(n) {
+		let local = n;
+		// why ()?
+		return () => local;
+	}
+	let wrap1 = wrapValue(1);
+	let wrap2 = wrapValue(2);
+	console.log(wrap1());
+	// -> 1
+	console.log(wrap2());
+	// -> 2
+
+	function multiplier(factor) {
+		return number => number * factor;
+	}
+
+	let twice = multiplier(2);
+	console.log(twice(5));
+	// -> 10
+
+
+pg 52.
+recursion (technically slower than a for-loop since fxn exec is an "extra step")
+	function findSolution(target) {
+		function find(current, history) {
+			if (current === target) {
+				return history;
+			} else if (current > target) {
+				return null;
+			} else {
+				return find(current + 5, `(${history} + 5)`) || find(current * 3, `(${hisotry} * 3)`)
+			}
+		}
+		return fin(1, "1");
+	}
+
+	console.log(findSolution(24));
+	// -> (((1 * 3) + 5) * 3)
+
+
+pg 54.
+	"It is no coincidence that the second [zeroPad] is useful in more situations than the first.
+	Functions that create values are easier to compbine in new ways than functions
+	that directly perform side effects."
+
+pg 55.
+pure function: has no side effects && doesn't rely on side effects from other code
