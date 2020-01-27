@@ -1,0 +1,159 @@
+pg 61.
+null.length;
+// -> TypeError: null has no properties
+
+ - - - 
+
+Both 
+	value.x
+and
+	value[x]
+access a property on value -- BUT not neccessarily the same property.
+The difference is in how 'x' is interpreted.
+
+When using '.' the word after the dot is the LITERAL NAME of the property
+When using [] the expression between the brackets is evaluated to get the property NAME
+
+Whereas value.x fetches the property of value named 'x'
+		value[x] tries to evaluate the expression 'x' and uses the result, converted to a string
+		as the property name
+
+So if you know that the property you are interested in is called 'color, 
+	you say:  value.color
+If you want to extract the property named by the value held in the binding 'i',
+	you say:  value[i]
+
+Property names are strings. They can be any string, 
+but the dot notation works only with names that look lik a valid binding name.
+	So...to access property name 2 or John Doe --> must use [] --> value[2] value["John Doe"]
+
+*The elements in an ARRAY are stored as the array's properties, using numbers as property names.
+b/c you CAN'T USE THE DOT NOTATION WITH NUMBERS
+and usually want to use a binding that holds the index anyway, you have to use [] to get at em'
+
+
+interesting console.log (after creating anObject.left & delete anObject.left):
+	console.log("left" in anObject);
+	// -> false
+	[before delete this '' in notation would have returned true]
+
+
+pg 65.
+Mutability
+	numbers, strings, and Booleans are all immutable...imporssible to change their value
+	you can combine them and derive new values BUT
+	when you take a specific string value, that value will always remain the same
+	the text inside it cannot be changed
+	(ex: if you have 'cat' other code cannot make that string be 'rat')
+
+	ojbects are different...
+	b/c their is a diff btwn having 2 refs to the same obj
+	and having two diff obj that contain the same properties`
+		ex: obj1 = {v:10}				obj1 = {v:10}
+			obj2 = {v:10}				obj2 = obj1
+			obj1 === obj2 -> False		obj1 === obj2 -> True [b/c SAME IDENTITY]
+
+		note: == operator is not a 'deep comparison' - it compares by identity
+
+a note for understanding destructuring better: 
+	let journal = [];
+	function addEntry(events, squirrel) {
+		journal.push({events, squirrel});
+	}
+	addEntry["work", "touched tree"], false);
+	// yields: journal [
+					{
+						events: ["work", "touched tree"],
+						squirrel: false
+					}
+				]
+
+pg 69.
+Array Loops
+this: 
+	for (let i = 0; i < JOURNAL.length; i++) {
+		let entry = JOURNAL[i]
+		// Do something with entry
+	}
+
+is the same as:
+	for (let entry in JOURNAL) {
+		console.log(`${entry.events.length} events.`)
+	}
+[this is the 'modern' version]
+
+so...to find every type of event:
+function journalEvents(journal) {
+	let events = [];
+	for (let events of journal) {
+		for (let event of entry.events) {
+			if (!events.includes(event)) {
+				events.push(event);
+			}
+		}
+	}
+	return events;
+}
+
+
+pg 72.
+quick removal:
+	function remove(array, index) {
+		return array.slice(0, index)
+			.concat(array.slice(index + 1));
+	}
+	console.log(remove(["a", "b", "c", "d", "e"], 2));
+	// -> ["a", "b", "c", "d", "e"]
+
+
+pg 73.
+string methods
+	console.log("   okay \n".trim());
+	// -> okay
+	console.log(String(6).padStart(3, "0"));
+	// -> 006
+	.split()
+	.join()
+	console.log("La".repeat(3))
+	// -> LaLaLa
+
+pg 74.
+Rest parameters
+	function max(...numbers) {
+		let result = -Infinity;
+		for (let number of numbers) {
+			if (number > result) result = number;
+		}
+		return result;
+	}
+	console.log(max(4, 1, 9, -2))
+	// -> 9
+
+	the rest parameter is  bound to an array containig all further arguments
+	if there are params before ... they are NOT part of the resulting array
+
+	"You can use a similar ... notation to call a function with an array of args:"
+	let numbers = [5, 1, 7];
+	console.log(max(...numbers));
+	// -> 7
+	"this 'spreads out' the array into the function call
+	passing its elements as sparate args"
+
+	"it is possible to include an array like that along with other args -> max(9, ...numbers, 2)
+	[] array notation also allows ... to spread another array into the new array:
+	let words = ["never", "fully"];
+	console.log(["Will", ...words, "understand"]);
+	// -> ["Will", "never", "fully", "understand"]
+
+pg 76.
+TODO: look at the destructuring example again
+
+
+pg 77.
+JSON
+	- serialize
+	- JavaScript Object Notation
+	- all property names must be ""
+	- only simple data expressions (no bindings, function calls, comments, or computation)
+	JSON.stringify -> turns js to JSON
+	JSON.parse -> parses JSON into js
