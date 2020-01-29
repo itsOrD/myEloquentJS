@@ -1,0 +1,25 @@
+{
+  "name": "alist",
+  "version": "1.0.0",
+  "description": "taking user input to search a node list",
+  "main": "arrayToList.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itsOrD/myEloquentJS/tree/ch4"
+  },
+  "keywords": [
+    "list",
+    "array",
+    "search",
+    "nth",
+    "node"
+  ],
+  "author": "itsOrD",
+  "license": "Unlicense",
+  "dependencies": {
+    "readline": "^1.3.0"
+  }
+}
